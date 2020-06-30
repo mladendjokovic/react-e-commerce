@@ -1,0 +1,17 @@
+.ProductDetails {
+    width: 90%;
+    max-width: 1110px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.ProductDetails__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.ProductDetails__image, .ProductDetails__info {
+    width: 100%;
+}

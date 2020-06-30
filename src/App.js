@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ProductList from './components/ProductList';
+import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
+import {storeProducts} from './data';
 
 function App() {
+  const [products, setProducts] = useState(storeProducts);
+  const [cart, setCart] = useState([]);
+  const details = (id) => {
+    return products.find(item => item.id === parseInt(id))
+  }
+  const addToCart = (id) => {
+    const cartItem = products.find(item => item.id === parseInt(id));
+    setCart([...cart, {...cartItem, count: 1, total: cartItem.price}]);
+  }
+  const removeFromCart = id => {
+    setProducts(products.map(item => item.id === id ? {...item, inCart: false} : item))
+    const newCart = cart.filter(item => item.id !== parseInt(id));
+    setCart(newCart)
+  }
+  const addCount = id => {
+    setCart(cart.map(item => item.id === id ? {...item, count: item.count + 1, total: (item.count + 1) * item.price} : item))
+  }
+  const removeCount = id => {
+    setCart(cart.map(item => item.id === id ? {...item, count: item.count - 1, total: (item.count - 1) * item.price} : item))
+  }
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" render={(routeProps) => <ProductList 
+        {...routeProps} data={products} addToCart={addToCart} />} />
+        <Route exact path="/details/:id" render={(routeProps) => <ProductDetails data={details(routeProps.match.params.id)}/>} />
+        <Route exact path="/cart" render={() => <Cart removeCount={removeCount} cartItems={cart} addCount={addCount} removeFromCart={removeFromCart}/> } />
+      </Switch>
+    </Router>
   );
 }
 

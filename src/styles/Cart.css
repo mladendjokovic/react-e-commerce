@@ -1,0 +1,9 @@
+.Cart {
+    margin: 4em 0;
+    text-align: center;
+}
+.Cart__container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 4em auto;
+}
