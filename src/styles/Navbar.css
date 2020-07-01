@@ -15,14 +15,20 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 12px;
+	width: 32px;
+	height: 24px;
+	padding: 10px;
 	cursor: pointer;
+	transition: all 0.3s;
+}
+.Navbar-hamburger:hover {
+	background-color: #115293;
 }
 .Navbar-hamburger span {
-	width: 24px;
-	height: 2px;
-	background-color: white;
-	transition: all 0.3s;
+	width: 100%;
+	height: 3px;
+	background: white;
+	border-radius: 2px;
 }
 .Navbar-center ul {
 	list-style-type: none;

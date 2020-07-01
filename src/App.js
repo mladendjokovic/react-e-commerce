@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ProductDetails from './components/ProductDetails';
@@ -37,12 +37,6 @@ function App() {
 			)
 		);
 	};
-	useEffect(
-		() => {
-			console.log(cart);
-		},
-		[ cart ]
-	);
 	return (
 		<Router>
 			<Navbar />
