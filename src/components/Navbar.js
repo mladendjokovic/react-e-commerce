@@ -20,10 +20,10 @@ export default function Navbar() {
 					</div>
 				</div>
 				<ul>
-					<li onClick={toggle}>
+					<li>
 						<Link to="/">Home</Link>
 					</li>
-					<li onClick={toggle}>
+					<li>
 						<Link to="/cart">Cart</Link>
 					</li>
 				</ul>

@@ -1,23 +1,32 @@
 .CartItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-align: left;
+	/* display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: auto;
+	align-items: center;
+	justify-items: center; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-
+.CartItem h4,
+.CartItem div,
+.CartItem img,
+.CartItem button {
+	flex: 1;
+}
 .CartItem img {
-    height: 4em;
+	height: 4em;
 }
 .CartItem__count span {
-    padding: 0.375em 0.5em;
-    border: 1px solid rgba(0,0,0,0.8);
-    margin: 0 0.5em;
-    cursor: pointer;
+	padding: 0.375em 0.5em;
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	margin: 0 0.5em;
+	cursor: pointer;
 }
 
 .CartItem button {
-    padding: 0.375em 0.75em;
-    background-color: transparent;
-    border-radius: 5px;
-    cursor: pointer;
+	padding: 0.375em 0.75em;
+	background-color: transparent;
+	border-radius: 5px;
+	cursor: pointer;
 }
